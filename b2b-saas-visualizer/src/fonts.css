@@ -1,0 +1,22 @@
+.instrument-sans {
+    font-family: "Instrument Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+  }
+  
+  .instrument-sans-400 {
+    font-weight: 400;
+  }
+  
+  .instrument-sans-500 {
+    font-weight: 500;
+  }
+  
+  .instrument-sans-600 {
+    font-weight: 600;
+  }
+  
+  .instrument-sans-700 {
+    font-weight: 700;
+  }

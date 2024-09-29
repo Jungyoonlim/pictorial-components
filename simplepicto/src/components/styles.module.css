@@ -1,0 +1,19 @@
+.organization-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .main-content {
+    width: 66.6667%;
+    padding: 1.5rem;
+    overflow-y: auto;
+  }
+  
+  .app-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f7fafc;
+  }
