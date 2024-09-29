@@ -1,55 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-interface Organization {
-  id: string;
-  name: string;
-  plan: string;
-  members: number;
-}
-
-interface Project {
-  id: string;
-  name: string;
-  orgId: string;
-  status: string;
-}
-
-interface Task {
-  id: string;
-  title: string;
-  projectId: string;
-  assignedTo: string;
-  status: string;
-}
-
-interface AppData {
-  organizations: Organization[];
-  projects: Project[];
-  tasks: Task[];
-}
-
-type ItemType = 'organization' | 'project' | 'task';
-
-interface SelectedItem {
-  type: ItemType;
-  [key: string]: any;
-}
-
-const initialData: AppData = {
-  organizations: [
-    { id: 'org1', name: 'Acme Corp', plan: 'Enterprise', members: 50 },
-    { id: 'org2', name: 'TechStart', plan: 'Pro', members: 20 },
-  ],
-  projects: [
-    { id: 'proj1', name: 'Website Redesign', orgId: 'org1', status: 'In Progress' },
-    { id: 'proj2', name: 'Mobile App', orgId: 'org2', status: 'Planning' },
-  ],
-  tasks: [
-    { id: 'task1', title: 'Design Homepage', projectId: 'proj1', assignedTo: 'John Doe', status: 'In Progress' },
-    { id: 'task2', title: 'Implement Login', projectId: 'proj2', assignedTo: 'Jane Smith', status: 'To Do' },
-  ],
-};
+import { AppData, Organization, Project, Task, SelectedItem, ItemType } from './types';
+import { initialData } from './data';
 
 const B2BSaasDbVisualizer: React.FC = () => {
   const [data, setData] = useState<AppData>(initialData);
