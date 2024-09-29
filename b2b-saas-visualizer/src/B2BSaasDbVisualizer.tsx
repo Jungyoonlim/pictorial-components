@@ -123,11 +123,13 @@ const B2BSaasDbVisualizer: React.FC = () => {
         padding: '16px',
         cursor: 'pointer',
     },
+    projectGrid: {
+
+    },
     projectCard: {
         width: '362.845.px',
         height: '343.041px',
-        
-
+        border-radius: 30px; 
     },
     organizationTitle: {
 
@@ -143,6 +145,9 @@ const B2BSaasDbVisualizer: React.FC = () => {
     },
     backendCodeBlock: {
         
+    },
+    popUp: {
+
     }
 
   }
