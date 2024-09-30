@@ -42,7 +42,8 @@ export const OrganizationsGrid = styled.div`
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 16px; 
     }
-`
+`;
+
 
 export const HeaderTitle = styled.h1`
     font-size: var(--header-font-size, 80px); 
@@ -83,7 +84,49 @@ export const HeaderTitle = styled.h1`
 export const OrganizationCard = styled(motion.div)`
     background-color: ${({ bgColor }) => bgColor || "#B5651D"}
     border-radius: 20px;
-    padding: 20
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease; 
+
+    &: hover {
+        transform: scale(1.02);
+    }
+
+    @media (max-width: 768px) {
+        padding: 15px; 
+    }
+
+    @media (max-width: 480px){
+        padding: 10px; 
+    }
+`;
+
+export const ProjectCard = styled(motion.div)`
+
+`;
+
+export const PopupContainer = styled(motion.div)`
+
+`;
+
+export const Overlay = styled(motion.div)`
 
 
-`
+`;
+
+export const MembersCount = styled.p`
+
+
+`;
+
+export const OrgTitle = styled.h2`
+
+
+`;
+
+export const OrgSubtitle = styled.p`
+
+`;

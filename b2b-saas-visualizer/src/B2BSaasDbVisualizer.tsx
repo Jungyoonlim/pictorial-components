@@ -4,7 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { AppData, Organization, Project, Task, SelectedItem, ItemType } from './types';
 import { initialData } from './data';
 import './fonts.css';
-import { HeaderTitle } from './styles'; 
+import { 
+  DashboardHeader,
+  OrganizationsGrid,
+  HeaderTitle,
+  OrganizationCard,
+  ProjectCard,
+  PopupContainer,
+  Overlay,
+  MembersCount,
+  OrgTitle,
+  OrgSubtitle
+} from './styles'; 
 
 const B2BSaasDbVisualizer: React.FC = () => {
   const [data, setData] = useState<AppData>(initialData);
