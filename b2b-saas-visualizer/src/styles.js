@@ -105,28 +105,83 @@ export const OrganizationCard = styled(motion.div)`
 `;
 
 export const ProjectCard = styled(motion.div)`
+    background-color: #E9A8A8;
+    border-radius: 12px;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direciton: column;
+    justify-content: space-between; 
+    transition: transform 0.3s ease; 
 
+    @media (max-width: 768px) {
+        padding: 10px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 8px; 
+    }
 `;
 
 export const PopupContainer = styled(motion.div)`
-
+    position: absolute; 
+    background-color: #fff;
+    border-radius: 12px; 
+    padding: 20px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto; 
 `;
 
 export const Overlay = styled(motion.div)`
-
-
+    position: fixed
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999; 
 `;
 
 export const MembersCount = styled.p`
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff; 
 
+    @media (max-width: 768px) {
+        font-size: 25px; 
+    }
 
+    @media (max-width: 480px){
+        font-size: 20px; 
+    }
 `;
 
 export const OrgTitle = styled.h2`
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
 
+    @media (max-width: 768px) {
+        font-size: 20px;
+    }
 
+    @media (max-width: 480px){
+        font-size: 18px; 
+    }
 `;
 
 export const OrgSubtitle = styled.p`
+    font-size: 16px;
 
+    @media (max-width: 768px){
+        font-size: 14px; 
+    }
+
+    @media (max-width: 480px) {
+        font-size: 12px; 
+    }
 `;

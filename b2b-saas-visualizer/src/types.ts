@@ -1,3 +1,5 @@
+export type Item = Organization | Project | Task;
+
 export interface Organization {
     id: string;
     name: string;
@@ -25,10 +27,8 @@ export interface AppData {
     projects: Project[];
     tasks: Task[];
   }
-  
-export type ItemType = 'organization' | 'project' | 'task';
 
-export interface SelectedItem {
-    type: ItemType;
-    [key: string]: any;
-  }
+
+export type ItemType = 'organization' | 'project' | 'task';
+export type SelectedItem = (Organization | Project | Task) & { type: ItemType }; 
+
