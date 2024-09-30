@@ -9,90 +9,60 @@ export const AppContainer = styled.div`
 `;
 
 export const DashboardHeader = styled.div`
-  --max-width: 1512;
-  --content-width: 1474;
-  --margin-side: 19;
-  --max-height: 982;
-  --content-height: 432;
-  --top-margin: 153;
-  --border-radius: 30px;
-  
-  position: relative;
-  width: calc((var(--content-width) / var(--max-width)) * 100vw);
-  height: calc((var(--content-height) / var(--max-height)) * 100vh);
-  max-height: var(--content-height);
-  background: #EA6304;
-  border-radius: var(--border-radius);
   display: flex;
-  margin-top: calc((var(--top-margin) / var(--max-height)) * 100vh);
-  margin-bottom: 0;
-  margin-left: calc((var(--margin-side) / var(--max-width)) * 100vw);
-  margin-right: calc((var(--margin-side) / var(--max-width)) * 100vw);
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  align-items: flex-start;
+  background-color: #EA6304;
+  width: 100%;
+  height: auto;
+  min-height: calc((432 / 982) * 100vh); 
+  padding: 40px;
   box-sizing: border-box;
+  border-radius: 30px;
+
+  margin-top: 153px;
 
   @media (max-width: 1200px) {
-    width: 100%
-    padding: 0 20px; 
-  }
-
-  @media (max-height: 982px) {
-    height: calc((var(--content-height) / var(--max-height)) * 100vh);
-    margin-top: calc((var(--top-margin) / var(--max-height)) * 100vh);
+    margin-top: calc(153 / 982 * 100vh);
   }
 
   @media (max-width: 768px) {
-    width: calc(100vw - 2 * calc((var(--margin-side) / var(--max-width)) * 100vw));
-    height: calc((350 / var(--max-height)) * 100vh);
-    padding: 0 16px;
+    margin-top: calc(153 / 768 * 100vh);
   }
 
   @media (max-width: 480px) {
-    height: calc((300 / var(--max-height)) * 100vh);
-    margin-top: calc((16 / var(--max-height)) * 100vh);
-    padding: 0 12px;
+    margin-top: calc(153 / 480 * 100vh);
   }
 `;
 
+
+
 export const HeaderTitle = styled.h1`
-    font-size: var(--header-font-size, 80px); 
-    line-height: 1.2; 
-    position: absolute; 
-    z-index: 2; 
-    color: #FFFFFF; 
-    text-align: left; 
+  font-size: 5rem; 
+  line-height: 1.2;
+  color: #FFFFFF;
+  text-align: left;
+  margin: 0;
 
-    /* Positioning based on the provided X, Y, W, H values */
-    width: calc(777 / 1512 * 100vw); 
-    height: calc(196 / 982 * 100vh); 
-    left: calc(41 / 1512 * 100vw); 
-    top: calc(369 / 982 * 100vh); 
+  width: 100%;
+  max-width: 777px; 
+  font-family: 'Instrument Sans', sans-serif;
 
-    font-family: 'Instrument Sans', sans-serif;
+  @media (max-width: 1200px) {
+    font-size: 3rem; 
+  }
 
-    @media (max-width: 1200px) {
-        font-size: 60px;
-        width: calc(777 / 1200 * 100vw);
-        left: calc(41 / 1200 * 100vw);
-        top: calc(369 / 800 * 100vh);
-    }
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
 
-    @media (max-width: 768px) {
-        font-size: 40px;
-        width: calc(777 / 768 * 100vw);
-        left: calc(41 / 768 * 100vw);
-        top: calc(369 / 600 * 100vh);
-    }
-
-    @media (max-width: 480px) {
-        font-size: 30px;
-        width: calc(777 / 480 * 100vw);
-        left: calc(41 / 480 * 100vw);
-        top: calc(369 / 400 * 100vh);
-    }
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
 `;
+
+
 
 export const OrganizationsGrid = styled.div`
   display: grid;
@@ -111,31 +81,48 @@ export const OrganizationsGrid = styled.div`
 `;
 
 export const OrganizationCard = styled(motion.div)`
+  --x-position: 19;
+  --y-position: 612;
+  --card-width: 362.84;
+  --card-height: 343.04;
+
   background-color: #853B06;
   border-radius: 30px;
   padding: 20px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  width: 100%; 
-  max-width: 349px; 
-  height: auto; 
+  position: absolute; 
+  left: calc((var(--x-position) / 1512) * 100vw); 
+  top: calc((var(--y-position) / 982) * 100vh);  
+  width: calc((var(--card-width) / 1512) * 100vw);  
+  height: calc((var(--card-height) / 982) * 100vh); 
   transition: transform 0.3s ease;
 
   &:hover {
     transform: scale(1.02);
   }
 
+  @media (max-width: 1200px) {
+    left: calc((var(--x-position) / 1200) * 100vw);  
+    top: calc((var(--y-position) / 800) * 100vh);   
+    width: calc((300 / 1200) * 100vw);               
+    height: calc((300 / 982) * 100vh);             
+  }
+
   @media (max-width: 768px) {
-    padding: 15px;
-    max-width: 300px; 
+    left: calc((var(--x-position) / 768) * 100vw);
+    top: calc((var(--y-position) / 768) * 100vh);
+    width: calc((280 / 768) * 100vw);
+    height: calc((280 / 768) * 100vh);
   }
 
   @media (max-width: 480px) {
-    padding: 10px;
-    max-width: 260px; 
+    left: calc((var(--x-position) / 480) * 100vw);
+    top: calc((var(--y-position) / 480) * 100vh);
+    width: calc((250 / 480) * 100vw);
+    height: calc((250 / 480) * 100vh);
   }
 `;
+
+
 
 export const ProjectsContainer = styled.div`
   display: flex;
@@ -156,31 +143,45 @@ export const ProjectsContainer = styled.div`
 
 
 export const ProjectCard = styled(motion.div).attrs((props) => ({
-    status: props.status,
-  }))`
-    background-color: ${(props) =>
-      props.status === 'In Progress' ? '#F9B2B2' : '#D49696'};
-    border-radius: 12px;
-    padding: 15px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease;
-  
-    &:hover {
-      transform: scale(1.01);
-    }
-  
-    @media (max-width: 768px) {
-      padding: 12px;
-    }
-  
-    @media (max-width: 480px) {
-      padding: 10px;
-    }
-  `;
-  
+  status: props.status,
+}))`
+  background-color: ${(props) =>
+    props.status === 'In Progress' ? '#F9B2B2' : '#D49696'};
+  border-radius: 12px;
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: transform 0.3s ease;
+
+  width: 100%;
+  max-width: 362px;
+  height: auto; 
+  margin: 20px; 
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 1200px) {
+    max-width: 300px;
+    padding: 12px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 280px;
+    padding: 12px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 250px;
+    padding: 10px;
+  }
+`;
+
 
 export const PopupContainer = styled(motion.div)`
     position: absolute; 
