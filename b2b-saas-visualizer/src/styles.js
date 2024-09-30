@@ -8,31 +8,51 @@ export const AppContainer = styled.div`
 `;
 
 export const DashboardHeader = styled.div`
-    position: relative;
-    width: var(--header-width, 80vw);
-    height: var(--header-height, 200px);
-    background: #EA6304;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  --max-width: 1512;
+  --content-width: 1474;
+  --margin-side: 19;
+  --max-height: 982;
+  --content-height: 432;
+  --top-margin: 153;
+  --border-radius: 30px;
+  
+  position: relative;
+  width: calc((var(--content-width) / var(--max-width)) * 100vw);
+  height: calc((var(--content-height) / var(--max-height)) * 100vh);
+  max-height: var(--content-height);
+  background: #EA6304;
+  border-radius: var(--border-radius);
+  display: flex;
+  /* Set margins individually */
+  margin-top: calc((var(--top-margin) / var(--max-height)) * 100vh);
+  margin-bottom: 0;
+  margin-left: calc((var(--margin-side) / var(--max-width)) * 100vw);
+  margin-right: calc((var(--margin-side) / var(--max-width)) * 100vw);
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-sizing: border-box;
 
-    @media (max-width: 1200px){
-        --header-width: 90vw; 
-        --header-height: 180px; 
-    }
+  @media (max-height: 982px) {
+    height: calc((var(--content-height) / var(--max-height)) * 100vh);
+    margin-top: calc((var(--top-margin) / var(--max-height)) * 100vh);
+  }
 
-    @media (max-width: 768px){
-        --header-width: 95vw;
-        --header-height: 150px; 
-    }
+  @media (max-width: 768px) {
+    width: calc(100vw - 2 * calc((var(--margin-side) / var(--max-width)) * 100vw));
+    height: calc((350 / var(--max-height)) * 100vh);
+    padding: 0 16px;
+  }
 
-    @media (max-width: 480px){
-        --header-width: 100vw;
-        --header-height: 120px; 
-    }
+  @media (max-width: 480px) {
+    height: calc((300 / var(--max-height)) * 100vh);
+    margin-top: calc((16 / var(--max-height)) * 100vh);
+    padding: 0 12px;
+  }
 `;
+
+
+
 
 export const OrganizationsGrid = styled.div`
     display: grid;
