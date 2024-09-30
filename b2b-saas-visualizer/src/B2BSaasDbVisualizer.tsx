@@ -18,10 +18,15 @@ import {
   OrganizationsGrid,
   HeaderTitle,
   OrganizationCard,
+  ProjectsContainer,
   ProjectCard,
+  ProjectTitle,
+  ProjectStatus, 
   PopupContainer,
   Overlay,
   MembersCount,
+  TaskItem,
+  TasksList,
   OrgTitle,
   OrgSubtitle
 } from './styles'; 
@@ -118,51 +123,46 @@ const B2BSaasDbVisualizer: React.FC = () => {
 
       {/* Grid for Organizations and Projects */}
       <OrganizationsGrid>
-        {data.organizations.map(org => (
-          <OrganizationCard
-            key={org.id}
-            whileHover={{ scale: 1.02 }}
+  {data.organizations.map(org => (
+    <OrganizationCard
+      key={org.id}
+      onClick={(e) => handleClick(e, org, 'organization')}
+    >
+      <OrgTitle>{org.name}</OrgTitle>
+      <OrgSubtitle>Plan: {org.plan}</OrgSubtitle>
+      <MembersCount>Members: {org.members}</MembersCount>
+
+      <ProjectsContainer>
+        {data.projects.filter(proj => proj.orgId === org.id).map(project => (
+          <ProjectCard
+            key={project.id}
             onClick={(e) => {
               e.stopPropagation();
-              handleClick(e, org, 'organization');
+              handleClick(e, project, 'project');
             }}
           >
-            <OrgTitle>{org.name}</OrgTitle>
-            <OrgSubtitle>Plan: {org.plan}</OrgSubtitle>
-            <MembersCount>Members: {org.members}</MembersCount>
+            <ProjectTitle>{project.name}</ProjectTitle>
+            <ProjectStatus>{project.status}</ProjectStatus>
 
-            {data.projects.filter(proj => proj.orgId === org.id).map(project => (
-              <ProjectCard
-                key={project.id}
-                whileHover={{ scale: 1.01 }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleClick(e, project, 'project');
-                }}
-              >
-                <h3>{project.name}</h3>
-                <p>Status: {project.status}</p>
-
-                <ul>
-                  {data.tasks.filter(task => task.projectId === project.id).map(task => (
-                    <motion.li
-                      key={task.id}
-                      className="bg-white rounded p-2 mb-2 text-sm"
-                      whileHover={{ scale: 1.01 }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleClick(e, task, 'task');
-                      }}
-                    >
-                      {task.title} - {task.status}
-                    </motion.li>
-                  ))}
-                </ul>
-              </ProjectCard>
-            ))}
-          </OrganizationCard>
+            <TasksList>
+              {data.tasks.filter(task => task.projectId === project.id).map(task => (
+                <TaskItem
+                  key={task.id}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleClick(e, task, 'task');
+                  }}
+                >
+                  {task.title} - {task.status}
+                </TaskItem>
+              ))}
+            </TasksList>
+          </ProjectCard>
         ))}
-      </OrganizationsGrid>
+      </ProjectsContainer>
+    </OrganizationCard>
+  ))}
+</OrganizationsGrid>
     </DashboardHeader>
 
     {/* Popup for Database Visualizer */}

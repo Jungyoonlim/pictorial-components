@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 export const AppContainer = styled.div`
     background-color: #000000;
     min-height: 100vh;
+    max-width: 100vw; 
     padding: 20px; 
 `;
 
@@ -23,7 +24,6 @@ export const DashboardHeader = styled.div`
   background: #EA6304;
   border-radius: var(--border-radius);
   display: flex;
-  /* Set margins individually */
   margin-top: calc((var(--top-margin) / var(--max-height)) * 100vh);
   margin-bottom: 0;
   margin-left: calc((var(--margin-side) / var(--max-width)) * 100vw);
@@ -32,6 +32,11 @@ export const DashboardHeader = styled.div`
   align-items: center;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   box-sizing: border-box;
+
+  @media (max-width: 1200px) {
+    width: 100%
+    padding: 0 20px; 
+  }
 
   @media (max-height: 982px) {
     height: calc((var(--content-height) / var(--max-height)) * 100vh);
@@ -51,103 +56,131 @@ export const DashboardHeader = styled.div`
   }
 `;
 
-
-
-
-export const OrganizationsGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 24px;
-
-    @media (max-width: 768px){
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 20px;
-    }
-
-    @media (max-width: 480px){
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 16px; 
-    }
-`;
-
-
 export const HeaderTitle = styled.h1`
     font-size: var(--header-font-size, 80px); 
     line-height: 1.2; 
-    position: relative;
-    z-index: 1; 
+    position: absolute; 
+    z-index: 2; 
     color: #FFFFFF; 
-    text-align: center; 
+    text-align: left; 
 
-    /* Proportional width, height, and positioning */
-    width: calc(777 / 1440 * 100vw);
-    height: calc(196 / 900 * 100vh);
-    left: calc(46 / 1440 * 100vw);
-    top: calc(369 / 900 * 100vh);
+    /* Positioning based on the provided X, Y, W, H values */
+    width: calc(777 / 1512 * 100vw); 
+    height: calc(196 / 982 * 100vh); 
+    left: calc(41 / 1512 * 100vw); 
+    top: calc(369 / 982 * 100vh); 
 
     font-family: 'Instrument Sans', sans-serif;
 
-    /* Adjust the font size for diff. screen sizes! */
     @media (max-width: 1200px) {
-        font-size: 60px; 
-        left: calc(46 / 1200 * 100vw);
-        right: calc(369 / 800 * 100vh); 
+        font-size: 60px;
+        width: calc(777 / 1200 * 100vw);
+        left: calc(41 / 1200 * 100vw);
+        top: calc(369 / 800 * 100vh);
     }
 
     @media (max-width: 768px) {
         font-size: 40px;
-        left: calc(46 / 768 * 100vw);
-        right: calc(369 / 600 * 100vh);
+        width: calc(777 / 768 * 100vw);
+        left: calc(41 / 768 * 100vw);
+        top: calc(369 / 600 * 100vh);
     }
 
     @media (max-width: 480px) {
         font-size: 30px;
-        left: calc(46 / 480 * 100vw);
+        width: calc(777 / 480 * 100vw);
+        left: calc(41 / 480 * 100vw);
         top: calc(369 / 400 * 100vh);
     }
 `;
 
-export const OrganizationCard = styled(motion.div)`
-    background-color: ${({ bgColor }) => bgColor || "#B5651D"}
-    border-radius: 20px;
-    padding: 20px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease; 
+export const OrganizationsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(362.84px, 1fr));
+  gap: 24px;
 
-    &: hover {
-        transform: scale(1.02);
-    }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
 
-    @media (max-width: 768px) {
-        padding: 15px; 
-    }
-
-    @media (max-width: 480px){
-        padding: 10px; 
-    }
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+  }
 `;
 
-export const ProjectCard = styled(motion.div)`
-    background-color: #E9A8A8;
+export const OrganizationCard = styled(motion.div)`
+  background-color: #853B06;
+  border-radius: 30px;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 100%; 
+  max-width: 349px; 
+  height: auto; 
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    max-width: 300px; 
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+    max-width: 260px; 
+  }
+`;
+
+export const ProjectsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 6px;
+    margin-top: 6px;
+  }
+`;
+
+
+export const ProjectCard = styled(motion.div).attrs((props) => ({
+    status: props.status,
+  }))`
+    background-color: ${(props) =>
+      props.status === 'In Progress' ? '#F9B2B2' : '#D49696'};
     border-radius: 12px;
     padding: 15px;
     cursor: pointer;
     display: flex;
-    flex-direciton: column;
-    justify-content: space-between; 
-    transition: transform 0.3s ease; 
-
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: scale(1.01);
+    }
+  
     @media (max-width: 768px) {
-        padding: 10px;
+      padding: 12px;
     }
-
+  
     @media (max-width: 480px) {
-        padding: 8px; 
+      padding: 10px;
     }
-`;
+  `;
+  
 
 export const PopupContainer = styled(motion.div)`
     position: absolute; 
@@ -170,6 +203,73 @@ export const Overlay = styled(motion.div)`
     background: rgba(0, 0, 0, 0.5);
     z-index: 999; 
 `;
+
+export const ProjectTitle = styled.h3`
+  font-size: 18px;
+  color: #FFFFFF;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
+`;
+
+export const ProjectStatus = styled.p`
+  font-size: 14px;
+  color: #FFFFFF;
+  margin: 5px 0 0 0;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 10px;
+  }
+`;
+
+export const TasksList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+
+  @media (max-width: 768px) {
+    margin: 8px 0 0 0;
+  }
+
+  @media (max-width: 480px) {
+    margin: 6px 0 0 0;
+  }
+`;
+
+export const TaskItem = styled(motion.li)`
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #000000;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  @media (max-width: 768px) {
+    padding: 6px;
+    font-size: 11px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 5px;
+    font-size: 10px;
+  }
+`;
+
 
 export const MembersCount = styled.p`
     font-size: 30px;
