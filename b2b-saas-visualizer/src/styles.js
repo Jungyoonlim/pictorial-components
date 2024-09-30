@@ -21,18 +21,18 @@ export const DashboardHeader = styled.div`
   box-sizing: border-box;
   border-radius: 30px;
 
-  margin-top: 153px;
+  margin-top: 90px;
 
   @media (max-width: 1200px) {
-    margin-top: calc(153 / 982 * 100vh);
+    margin-top: calc(90 / 982 * 100vh);
   }
 
   @media (max-width: 768px) {
-    margin-top: calc(153 / 768 * 100vh);
+    margin-top: calc(90 / 768 * 100vh);
   }
 
   @media (max-width: 480px) {
-    margin-top: calc(153 / 480 * 100vh);
+    margin-top: calc(90 / 480 * 100vh);
   }
 `;
 
@@ -44,21 +44,26 @@ export const HeaderTitle = styled.h1`
   color: #FFFFFF;
   text-align: left;
   margin: 0;
-
+  
   width: 100%;
   max-width: 777px; 
   font-family: 'Instrument Sans', sans-serif;
 
+  margin-top: 369px;
+
   @media (max-width: 1200px) {
-    font-size: 3rem; 
+    font-size: 3rem;
+    margin-top: calc(369 / 982 * 100vh); 
   }
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
+    margin-top: calc(369 / 768 * 100vh);
   }
 
   @media (max-width: 480px) {
     font-size: 2rem;
+    margin-top: calc(369 / 480 * 100vh); 
   }
 `;
 
