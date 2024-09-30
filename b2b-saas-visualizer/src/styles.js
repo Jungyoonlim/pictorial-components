@@ -22,8 +22,11 @@ export const DashboardHeader = styled.div`
         --header-height: 150px; 
     }
 
-    
-`
+    @media (max-width: 480px){
+        --header-width: 100vw;
+        --header-height: 120px; 
+    }
+`;
 
 export const OrganizationsGrid = styled.div`
     display: grid;
@@ -34,13 +37,13 @@ export const OrganizationsGrid = styled.div`
 
 
 export const HeaderTitle = styled.div`
+    font-size: var(--header-font-size, 80px); 
     position: absolute;
     width: 777px;
     height: 196px; 
     left: 46px; 
     top: 369px; 
     font-family: 'Instrument Sans', sans-serif;
-    font-size: normal;
     font-weight: 400;
     font-size: 80px;
     line-height: 98px;
