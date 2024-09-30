@@ -13,6 +13,7 @@ const B2BSaasDbVisualizer: React.FC = () => {
   const [editingField, setEditingField] = useState<string | null>(null);
   const [showCheckmark, setShowCheckmark] = useState<boolean>(false);
   const [backendCode, setBackendCode] = useState<string>('');
+  const [showPopup, setShowPopup] = useState<boolean>(false);
 
   const handleSelect = (item: Organization | Project | Task, type: ItemType) => {
     setSelectedItem({ ...item, type });
@@ -85,7 +86,16 @@ const B2BSaasDbVisualizer: React.FC = () => {
     </div>
   );
 
-  const 
+  // handlePopup sets the selected item and opens the popup by updating the ShowPopup state variable
+  const handlePopup = (item: Organization | Project | Task, type: ItemType) => {
+    setSelectedItem({ ...item, type });
+    setShowPopup(true);
+  }
+
+  // closePopup closes the popup by updating the ShowPopup state variable
+  const closePopup = () => {
+    setShowPopup(false);
+  }
 
   return (
   <div style={styles.container}>
@@ -153,74 +163,46 @@ const B2BSaasDbVisualizer: React.FC = () => {
     </button>
 
     {/* Selected Item */}
+    {/* Popup for Database Visualizer */}
     <AnimatePresence>
-      {selectedItem && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="bg-gray-700 rounded-lg p-4 mb-4"
-        >
-          <h3 className="text-lg font-semibold mb-2">
-            {selectedItem.type.charAt(0).toUpperCase() + selectedItem.type.slice(1)} Details
-          </h3>
-          {Object.entries(selectedItem).map(([key, value]) => 
-            key !== 'type' && renderEditableField(key, value)
-          )}
-          <AnimatePresence>
-            {showCheckmark && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0 }}
-                className="text-green-500 font-bold mt-2"
-              >
-                ✓ Changes saved
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      )}
-    </AnimatePresence>
-
-    {/* Schema View */}
-    <AnimatePresence>
-      {showSchema && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="bg-gray-700 rounded-lg p-4"
-        >
-          <h3 className="text-lg font-semibold mb-2">Database Schema</h3>
-          {(Object.keys(data) as Array<keyof AppData>).map(table => (
-            <div key={table} className="mb-4">
-              <h4 className="font-semibold">{table.charAt(0).toUpperCase() + table.slice(1)}</h4>
-              <ul className="list-disc list-inside">
-                {Object.keys(data[table][0]).map(column => (
-                  <li key={column} className="text-sm">{column}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </motion.div>
-      )}
-    </AnimatePresence>
-
-    {/* Backend Code */}
-    {backendCode && (
-      <motion.div
-        initial={{ opacity: 0, height: 0 }}
-        animate={{ opacity: 1, height: 'auto' }}
-        exit={{ opacity: 0, height: 0 }}
-        style={styles.backendCodeBlock}
-      >
-        <h3 className="text-lg font-semibold mb-2">Generated Backend Code</h3>
-        <pre className="text-xs overflow-x-auto">{backendCode}</pre>
-      </motion.div>
-    )}
+      {showPopup && (
+        <>
+            <Overlay
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closePopup}
+            />
+            <PopupContainer
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+            >
+              <h3>{selectedItem?.type.charAt(0).toUpperCase() + selectedItem?.type.slice(1)} Details</h3>
+              {selectedItem && (
+                <div>
+                  {Object.entries(selectedItem).map(([key, value]) =>
+                    key !== 'type' && renderEditableField(key, value) // Render editable fields except 'type'
+                  )}
+                </div>
+              )}
+              {showCheckmark && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0 }}
+                  className="text-green-500 font-bold mt-2"
+                >
+                  ✓ Changes saved
+                </motion.div>
+              )}
+              <button onClick={closePopup}>Close</button>
+            </PopupContainer>
+          </>
+        )}
+      </AnimatePresence>
+    </div>
   </div>
-</div>
 
   );
 }
