@@ -13,6 +13,7 @@ import {
 import { initialData } from './data';
 import './fonts.css';
 import { 
+  AppContainer,
   DashboardHeader,
   OrganizationsGrid,
   HeaderTitle,
@@ -109,7 +110,7 @@ const B2BSaasDbVisualizer: React.FC = () => {
   }
 
   return (
-    <div style={{ padding: '20px' }}>
+    <AppContainer>
     <DashboardHeader>
       <HeaderTitle>
         Project Management Dashboard
@@ -205,7 +206,7 @@ const B2BSaasDbVisualizer: React.FC = () => {
         </>
       )}
     </AnimatePresence>
-  </div>
+  </AppContainer>
   );
 }
 

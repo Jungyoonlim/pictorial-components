@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+export const AppContainer = styled.div`
+    background-color: #000000;
+    min-height: 100vh;
+    padding: 20px; 
+`;
+
 export const DashboardHeader = styled.div`
     position: relative;
     width: var(--header-width, 80vw);
