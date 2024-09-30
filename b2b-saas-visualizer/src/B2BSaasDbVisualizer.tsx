@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import styled from 'styled-components'; 
 import { motion, AnimatePresence } from 'framer-motion';
 import { AppData, Organization, Project, Task, SelectedItem, ItemType } from './types';
 import { initialData } from './data';
 import './fonts.css';
+import { HeaderTitle } from './styles'; 
 
 const B2BSaasDbVisualizer: React.FC = () => {
   const [data, setData] = useState<AppData>(initialData);
@@ -83,81 +85,14 @@ const B2BSaasDbVisualizer: React.FC = () => {
     </div>
   );
 
-  const styles = {
-    container: {
-        display: 'flex',
-        height: '100vh',
-        backgroundColor: '#000000',
-        color: '#FFFFFF',
-        alignItems: 'center',
-    },
-    dashboard: {
-        width: '90%',
-        maxWidth: '1743px',
-        aspectRatio: '16 /9',
-        overflow: 'auto',
-    },
-    header: {
-        width: '1473px',
-        height: '432px',
-        maxWidth: '100%',
-        backgroundColor: '#D35400',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '2.5rem',
-        fontWeight: 'bold',
-        marginBottom: '24px',
-        borderRadius: '8px',
-        padding: '16px',
-        boxSizing: 'border-box' as const,
-    },
-    organizationsGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-        gap: '24px',
-    },
-    organizationsCard: {
-        backgroundColor: '#8B4513',
-        borderRadius: '8px',
-        padding: '16px',
-        cursor: 'pointer',
-    },
-    projectGrid: {
-
-    },
-    projectCard: {
-        width: '362.845.px',
-        height: '343.041px',
-        border-radius: 30px; 
-    },
-    organizationTitle: {
-
-    },
-    organizationSubtitle: {
-
-    }, 
-    membersCount: {
-
-    },
-    projectStatus: {
-
-    },
-    backendCodeBlock: {
-        
-    },
-    popUp: {
-
-    }
-
-  }
+  const 
 
   return (
-    <div style={styles.container}>
+  <div style={styles.container}>
   <div style={styles.dashboard}>
-    <h1 style={styles.header}>
+    <HeaderTitle>
         Project Management Dashboard
-    </h1>
+    </HeaderTitle>
     
     {/* Grid for Organizations and Projects */}
     <div style={styles.organizationsGrid}>
