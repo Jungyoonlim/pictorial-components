@@ -37,7 +37,6 @@ export const DashboardHeader = styled.div`
 `;
 
 
-
 export const HeaderTitle = styled.h1`
   font-size: 5rem; 
   line-height: 1.2;
@@ -66,8 +65,6 @@ export const HeaderTitle = styled.h1`
     margin-top: calc(369 / 480 * 100vh); 
   }
 `;
-
-
 
 export const OrganizationsGrid = styled.div`
   display: grid;
@@ -102,7 +99,7 @@ export const OrganizationCard = styled(motion.div)`
   transition: transform 0.3s ease;
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.02); 
   }
 
   @media (max-width: 1200px) {
