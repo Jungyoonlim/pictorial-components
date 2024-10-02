@@ -2,8 +2,8 @@ import { AppData } from './types';
 
 export const initialData: AppData = {
     organizations: [
-      { id: 'org1', name: 'Acme Corp', plan: 'Enterprise', members: 50 },
-      { id: 'org2', name: 'TechStart', plan: 'Pro', members: 20 },
+      { id: 'org1', name: 'Apple', plan: 'Enterprise', members: 50 },
+      { id: 'org2', name: 'Figma', plan: 'Pro', members: 20 },
     ],
     projects: [
       { id: 'proj1', name: 'Website Redesign', orgId: 'org1', status: 'In Progress' },

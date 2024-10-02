@@ -18,8 +18,6 @@ import {
   TextMembers, 
   Overlay,
   MembersCount,
-  TaskItem,
-  TasksList,
   OrgTitle,
   OrgSubtitle
 } from './styles'; 
