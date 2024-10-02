@@ -72,7 +72,7 @@ const B2BSaasDbVisualizer: React.FC = () => {
   };
 
 
-
+  // renders editable field on the popup, allows you to fix the field 
   const renderEditableField = (key: string, value: any) => (
     <div key={key} className="mb-2">
       <span className="font-semibold">{key}: </span>
@@ -121,19 +121,23 @@ const B2BSaasDbVisualizer: React.FC = () => {
         Project Management Dashboard
       </HeaderTitle>
 
-      {/* Grid for Organizations and Projects */}
+     
+    <div style={{ display: 'flex' }}>
       <OrganizationsGrid>
-  {data.organizations.map(org => (
-    <OrganizationCard
-      key={org.id}
-      onClick={(e) => handleClick(e, org, 'organization')}
-    >
-      <OrgTitle>{org.name}</OrgTitle>
-      <OrgSubtitle>Plan: {org.plan}</OrgSubtitle>
-      <MembersCount>Members: {org.members}</MembersCount>
+        {data.organizations.map(org => (
+          <OrganizationCard
+            key={org.id}
+            onClick={(e) => handleClick(e, org, 'organization')}
+          >
+            <OrgTitle>{org.name}</OrgTitle>
+            <OrgSubtitle>Plan: {org.plan}</OrgSubtitle>
+            <MembersCount>Members: {org.members}</MembersCount>
+          </OrganizationCard>
+        ))}
+      </OrganizationsGrid>
 
       <ProjectsContainer>
-        {data.projects.filter(proj => proj.orgId === org.id).map(project => (
+        {data.projects.map(project => (
           <ProjectCard
             key={project.id}
             status={project.status}
@@ -161,54 +165,52 @@ const B2BSaasDbVisualizer: React.FC = () => {
           </ProjectCard>
         ))}
       </ProjectsContainer>
-    </OrganizationCard>
-  ))}
-</OrganizationsGrid>
-    </DashboardHeader>
+    </div>
+  </DashboardHeader>
 
-    {/* Popup for Database Visualizer */}
-    <AnimatePresence>
-      {showPopup && (
-        <>
-          <Overlay
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={closePopup}
-          />
-          <PopupContainer
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
-            style={{ position: 'absolute', left: popupPosition.x, top: popupPosition.y }}
-          >
-            {selectedItem && (
-              <>
-                <h3>{selectedItem.type.charAt(0).toUpperCase() + selectedItem.type.slice(1)} Details</h3>
-                <div>
-                  {Object.entries(selectedItem).map(([key, value]) =>
-                    key !== 'type' && renderEditableField(key, value) // Render editable fields except 'type'
-                  )}
-                </div>
-                {showCheckmark && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0 }}
-                    className="text-green-500 font-bold mt-2"
-                  >
-                    ✓ Changes saved
-                  </motion.div>
+  {/* Popup for Database Visualizer */}
+  <AnimatePresence>
+    {showPopup && (
+      <>
+        <Overlay
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closePopup}
+        />
+        <PopupContainer
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          style={{ position: 'absolute', left: popupPosition.x, top: popupPosition.y }}
+        >
+          {selectedItem && (
+            <>
+              <h3>{selectedItem.type.charAt(0).toUpperCase() + selectedItem.type.slice(1)} Details</h3>
+              <div>
+                {Object.entries(selectedItem).map(([key, value]) =>
+                  key !== 'type' && renderEditableField(key, value) // Render editable fields except 'type'
                 )}
-                <button onClick={closePopup}>Close</button>
-              </>
-            )}
-          </PopupContainer>
-        </>
-      )}
-    </AnimatePresence>
-  </AppContainer>
+              </div>
+              {showCheckmark && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0 }}
+                  className="text-green-500 font-bold mt-2"
+                >
+                  ✓ Changes saved
+                </motion.div>
+              )}
+              <button onClick={closePopup}>Close</button>
+            </>
+          )}
+        </PopupContainer>
+      </>
+    )}
+  </AnimatePresence>
+</AppContainer>
   );
-}
+};
 
 export default B2BSaasDbVisualizer;
