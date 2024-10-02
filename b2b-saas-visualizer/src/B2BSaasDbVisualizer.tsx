@@ -136,6 +136,7 @@ const B2BSaasDbVisualizer: React.FC = () => {
         {data.projects.filter(proj => proj.orgId === org.id).map(project => (
           <ProjectCard
             key={project.id}
+            status={project.status}
             onClick={(e) => {
               e.stopPropagation();
               handleClick(e, project, 'project');
