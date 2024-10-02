@@ -134,7 +134,6 @@ const B2BSaasDbVisualizer: React.FC = () => {
         {data.projects.map(project => (
           <ProjectCard
             key={project.id}
-            status={project.status}
             onClick={(e) => {
               e.stopPropagation();
               handleClick(e, project, 'project');
@@ -142,20 +141,6 @@ const B2BSaasDbVisualizer: React.FC = () => {
           >
             <ProjectTitle>{project.name}</ProjectTitle>
             <ProjectStatus>{project.status}</ProjectStatus>
-
-            <TasksList>
-              {data.tasks.filter(task => task.projectId === project.id).map(task => (
-                <TaskItem
-                  key={task.id}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleClick(e, task, 'task');
-                  }}
-                >
-                  {task.title} - {task.status}
-                </TaskItem>
-              ))}
-            </TasksList>
           </ProjectCard>
         ))}
       </ProjectsContainer>
