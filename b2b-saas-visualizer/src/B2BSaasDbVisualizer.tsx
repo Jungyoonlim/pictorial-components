@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
 import { useAppContext } from './context';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Item, 
-  SelectedItem, 
-  AppData, 
-  Organization, 
-  Project, 
-  Task,  
-  ItemType 
-} from './types';
+import { Item, SelectedItem, AppData, ItemType } from './types';
 import { initialData } from './data';
 import './fonts.css';
 import { 
@@ -23,6 +15,7 @@ import {
   ProjectTitle,
   ProjectStatus, 
   PopupContainer,
+  TextMembers, 
   Overlay,
   MembersCount,
   TaskItem,
@@ -130,8 +123,9 @@ const B2BSaasDbVisualizer: React.FC = () => {
             onClick={(e) => handleClick(e, org, 'organization')}
           >
             <OrgTitle>{org.name}</OrgTitle>
-            <OrgSubtitle>Plan: {org.plan}</OrgSubtitle>
-            <MembersCount>Members: {org.members}</MembersCount>
+            <OrgSubtitle>{org.plan} Plan</OrgSubtitle>
+            <TextMembers>Members</TextMembers>
+            <MembersCount>{org.members}</MembersCount>
           </OrganizationCard>
         ))}
       </OrganizationsGrid>

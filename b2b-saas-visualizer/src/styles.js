@@ -124,7 +124,9 @@ export const OrganizationCard = styled(motion.div)`
   }
 `;
 
+export const TextMembers = styled.div`
 
+`;
 
 export const ProjectsContainer = styled.div`
   display: flex;
