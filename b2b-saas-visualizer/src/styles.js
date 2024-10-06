@@ -151,8 +151,8 @@ export const ProjectCard = styled(motion.div).attrs((props) => ({
 }))`
   background-color: ${(props) =>
     props.status === 'In Progress' ? '#F9B2B2' : '#D49696'};
-  border-radius: 12px;
-  padding: 15px;
+  border-radius: 15px;
+  padding: 175px;
   cursor: pointer;
   display: flex;
   flex-direction: column; 
@@ -161,7 +161,7 @@ export const ProjectCard = styled(motion.div).attrs((props) => ({
   transition: transform 0.3s ease;
 
   width: 100%;
-  max-width: 362px;
+  max-width: 500px;
   height: auto; 
   margin: 20px; 
 

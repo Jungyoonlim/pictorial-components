@@ -112,7 +112,7 @@ const B2BSaasDbVisualizer: React.FC = () => {
         Project Management Dashboard
       </HeaderTitle>
 
-     
+    // Organizations here, Apple and Figma for here 
     <div style={{ display: 'flex' }}>
       <OrganizationsGrid>
         {data.organizations.map(org => (
