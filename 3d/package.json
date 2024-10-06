@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.169.0",
+    "install": "^0.13.0",
+    "npm": "^10.9.0"
+  }
+}
