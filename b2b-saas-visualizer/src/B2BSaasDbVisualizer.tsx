@@ -111,7 +111,10 @@ const B2BSaasDbVisualizer: React.FC = () => {
       <HeaderTitle>
         Project Management Dashboard
       </HeaderTitle>
-    <div style={{ display: 'flex' }}>
+      </DashboardHeader>
+
+
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
       <OrganizationsGrid>
         {data.organizations.map(org => (
           <OrganizationCard
@@ -141,7 +144,6 @@ const B2BSaasDbVisualizer: React.FC = () => {
         ))}
       </ProjectsContainer>
     </div>
-  </DashboardHeader>
 
   {/* Popup for Database Visualizer */}
   <AnimatePresence>
